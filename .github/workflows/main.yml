@@ -1,0 +1,25 @@
+name: Build Docker Image and Push to Hub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push:
+    name: Build Docker Image and Push to Hub
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build and Push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with: 
+          image: compilereg/iticgi
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: "${{ secrets.REPO_USERNAME }}"
+          password: "${{ secrets.REPO_PASSWORD }}"
+          tags: latest
