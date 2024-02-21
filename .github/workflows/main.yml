@@ -17,7 +17,7 @@ jobs:
     - name: Build and Push Docker image
       uses: mr-smithers-excellent/docker-build-push@v6
       with: 
-          image: compilereg/iticgi
+          image: seifahmed012/iti.labs.docker
           registry: docker.io
           dockerfile: Dockerfile
           username: "${{ secrets.REPO_USERNAME }}"
